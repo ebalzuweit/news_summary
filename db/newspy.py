@@ -69,3 +69,5 @@ if __name__ == '__main__':
     
     if args.display > 0:
         display_articles(db, args.display)
+
+    db.close()
