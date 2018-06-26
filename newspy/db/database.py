@@ -77,13 +77,13 @@ class ArticleDB():
         self.cursor.execute(query, binding)
         self.conn.commit()
 
-    def fetch_articles(self, limit):
+    def fetch_articles(self, limit=None):
         query = '''
         SELECT A.*, S.Name, S.Link FROM Articles A
         JOIN Sources S ON S.ID = A.Source
         ORDER BY A.Published DESC
-        LIMIT {lim}
-        '''.format(lim=limit)
+        {lim}
+        '''.format(lim='' if limit is None else 'LIMIT ' + limit)
 
         self.cursor.execute(query)
         article_rows = self.cursor.fetchall()

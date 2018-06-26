@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>newspy</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            newspy
+        </div>
+        {% for article in articles %}
+        <div class="article {% if article['old'] %} article-old {% endif %}">
+            <hr class="article-hr">
+            <div class="article-title">
+                <a href="{{ article['link'] }}">
+                        {{ article['title'] }}
+                    </a>
+            </div>
+            <div class="article-details">
+                <div class="article-source">
+                    <a href="{{ article['source']['link'] }}">
+                            {{ article['source']['name'] }}
+                        </a>
+                </div>
+                <div class="article-score">
+                    {{ article['summary_score'] }}
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <hr class="article-hr-mid">
+            <div class="article-summary">
+                <p>{{ article['summary'] }}</p>
+            </div>
+            <hr class="article-hr">
+        </div>
+        <br> {% endfor %}
+        <div class="article-score">
+            <a href="/refresh">
+                REFRESH
+            </a>
+        </div>
+        <br>
+        <br>
+    </div>
+</body>
+
+</html>
