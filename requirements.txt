@@ -29,4 +29,4 @@ six==1.11.0
 tldextract==2.2.0
 Unidecode==1.0.22
 urllib3==1.26.5
-Werkzeug==0.15.3
+Werkzeug==2.2.3
